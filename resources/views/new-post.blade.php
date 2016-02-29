@@ -1,25 +1,33 @@
-<h1>New Post</h1>
+@extends('layout.app')
 
-@if (count($errors) > 0)
-  @foreach ($errors->all() as $error)
-    {{ $error }}
-  @endforeach
-@endif
+@section('content')
+  <div id="page_wrapper">
+    <h1>New Post</h1>
 
-<form method="POST" action="{{ url('new-post') }}">
+    @if (count($errors) > 0)
+      @foreach ($errors->all() as $error)
+        {{ $error }}
+      @endforeach
+    @endif
 
-  {{ csrf_field() }}
+    <form action="{{ url('new-post') }}" method="POST">
 
-  <label for="title">Title</label>
-  <input type="text" id="title" name="title">
+      {{ csrf_field() }}
 
-  <br><br>
+      <p>
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title">
+      </p>
 
-  <label for="body">Body</label>
-  <input type="text_area" id="body" name="body">
+      <p>
+        <label for="body">Body</label><br>
+        <textarea type="text" id="body" name="body"></textarea>
+      </p>
 
-  <br><br>
+      <p>
+        <input type="submit" value="Save Post">
+      </p>
 
-  <input type="submit">
-  
-</form>
+    </form>
+  </div>
+@endsection
