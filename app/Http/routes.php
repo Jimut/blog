@@ -37,4 +37,6 @@ Route::group(['middleware' => ['web']], function () {
   Route::put('edit-post/{id}', 'PostController@updatePost');
 
   Route::get('delete-post/{id}', 'PostController@destroy');
+
+  Route::resource('post/{post_id}/comment', 'CommentController');
 });

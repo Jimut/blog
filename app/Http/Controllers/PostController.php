@@ -8,8 +8,6 @@ use App\Http\Requests;
 
 use App\Post;
 
-use Validator;
-
 class PostController extends Controller
 {
   public function index () {

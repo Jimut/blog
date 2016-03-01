@@ -15,5 +15,15 @@
     <p class="body">
       {{ $post->body }}
     </p>
+
+    <div id="comments">
+      <h2>{{ count($post->comments) }} Comments</h2>
+      @foreach($post->comments as $comment)
+        @include('partial.comment')
+      @endforeach
+
+      <h3>Add a comment</h3>
+      @include('partial.comment-form')
+    </div>
   </div>
 @endsection
