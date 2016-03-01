@@ -28,10 +28,13 @@
 
 Route::group(['middleware' => ['web']], function () {
   Route::get('/', 'PostController@index');
-
   Route::get('post/{id}', 'PostController@showPost');
 
   Route::get('new-post', 'PostController@newPost');
-
   Route::post('new-post', 'PostController@createPost');
+
+  Route::get('edit-post/{id}', 'PostController@editPost');
+  Route::put('edit-post/{id}', 'PostController@updatePost');
+
+  Route::get('delete-post/{id}', 'PostController@destroy');
 });
