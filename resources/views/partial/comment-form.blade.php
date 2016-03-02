@@ -8,14 +8,14 @@
   </p>
 
   <p>
-    <label for="body"></label><br>
+    <label for="body">Body</label><br>
     <textarea id="body" name="body"></textarea>
   </p>
 
   <br>
 
   <p>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Create Comment">
   </p>
-  
+
 </form>

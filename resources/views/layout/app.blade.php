@@ -18,14 +18,14 @@
       <ul>
         <li class="category">Website</li>
         <li><a href="{{ url('/') }}">Blog</a></li>
-        <li>About</li>
+        <li><a href="{{ url('about') }}">About</a></li>
       </ul>
 
       <ul>
         <li class="category">Social</li>
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Github</a></li>
+        <li><a href="https://twitter.com/JemDhali" target="_blank">Twitter</a></li>
+        <li><a href="https://www.facebook.com/jem.dhali" target="_blank">Facebook</a></li>
+        <li><a href="https://github.com/Jimut" target="_blank">Github</a></li>
         <li><a href="mailto:jemdhali67@gmail.com">Email</a></li>
       </ul>
 
@@ -34,7 +34,13 @@
 
     <div id="main_content">
       <div id="header">
-        <p>All Posts</p>
+        @if(Request::is('') || Request::is('post'))
+          <p>All Posts</p>
+        @elseif(Request::is('about'))
+          <p>About</p>
+        @else
+          <a href="{{ url('post') }}">Back to all Posts</a>
+        @endif
 
         <div class="buttons">
           <button class="button">
