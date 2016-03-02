@@ -38,7 +38,7 @@
 
         <div class="buttons">
           <button class="button">
-            <a href="{{ url('new-post') }}">New Post</a>
+            <a href="{{ url('post/create') }}">New Post</a>
           </button>
           <button class="button">Log Out</button>
         </div>
@@ -49,5 +49,7 @@
       @yield('content')
     </div>
 
+    <script src="{{ URL::asset('assets/js/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('assets/js/all.js') }}" type="text/javascript"></script>
   </body>
 </html>

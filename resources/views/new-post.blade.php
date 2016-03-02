@@ -6,7 +6,7 @@
 
     @include('partial.error')
 
-    <form action="{{ url('new-post') }}" method="POST">
+    <form action="{{ url('post') }}" method="POST">
 
       {{ csrf_field() }}
 

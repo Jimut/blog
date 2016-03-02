@@ -6,7 +6,7 @@
   </div>
 
   <p>
-    <form action="{{ url('post/' . $post->id . '/comment/' . $comment->id) }}" method="POST">
+    <form action="{{ url('post/' . $post->id . '/comment/' . $comment->id) }}" method="POST" class="delete">
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
       <input type="submit" class="button" value="Delete">

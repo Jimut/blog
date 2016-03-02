@@ -220,6 +220,22 @@ a {
   a:hover, a:focus {
     color: #40a6ff; }
 
+form.form-inline {
+  display: inline; }
+  form.form-inline input[type="submit"].link {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    display: inline !important;
+    font-size: 1em !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    background: none !important;
+    color: #0074D9;
+    text-decoration: none; }
+    form.form-inline input[type="submit"].link:hover, form.form-inline input[type="submit"].link:focus {
+      color: #40a6ff; }
+
 #sidebar {
   width: 250px;
   position: fixed;

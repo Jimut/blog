@@ -1,4 +1,5 @@
 <form action="{{ url('post/' . $post->id . '/comment') }}" method="POST">
+
   {{ csrf_field() }}
 
   <p>
@@ -16,4 +17,5 @@
   <p>
     <input type="submit" value="Submit">
   </p>
+  
 </form>

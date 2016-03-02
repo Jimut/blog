@@ -6,7 +6,7 @@
 
     @include('partial.error')
 
-    <form action="{{ url('edit-post/' . $post->id) }}" method="POST">
+    <form action="{{ url('post/' . $post->id) }}" method="POST">
 
       {{ csrf_field() }}
 

@@ -85,6 +85,7 @@ class CommentController extends Controller
    * Remove the specified resource from storage.
    *
    * @param  int  $id
+   * @param  int $post_id
    * @return \Illuminate\Http\Response
    */
   public function destroy($post_id, $id)

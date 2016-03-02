@@ -10,44 +10,35 @@ use App\Post;
 
 class PostController extends Controller
 {
-  public function index () {
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
     $posts = Post::orderBy('created_at', 'desc')->get();
     return view('index', ['posts' => $posts]);
   }
 
-  public function showPost ($id) {
-    $post = Post::find($id);
-    return view('show-post', ['post' => $post]);
-  }
-
-
-
-  public function editPost ($id) {
-    $post = Post::find($id);
-    return view('edit-post', ['post' => $post]);
-  }
-
-  public function updatePost (Request $request, $id) {
-    $this->validate($request, [
-      'title' => 'required|min:5',
-      'body' => 'required'
-    ]);
-
-    $post = Post::find($id);
-    $post->title = $request->title;
-    $post->body = $request->body;
-    $post->save();
-
-    return redirect()->action('PostController@showPost', ['id' => $post->id]);
-  }
-
-
-
-  public function newPost () {
+  /**
+   * Show the form for creating a new resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function create()
+  {
     return view('new-post');
   }
 
-  public function createPost (Request $request) {
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
+  {
     $this->validate($request, [
       'title' => 'required|min:5',
       'body' => 'required'
@@ -58,16 +49,71 @@ class PostController extends Controller
     $post->body = $request->body;
     $post->save();
 
-    return redirect()->action('PostController@showPost', ['id' => $post->id]);
+    return redirect()
+            ->action('PostController@show', [
+                      'id' => $post->id
+                    ]);
   }
 
-
-
-  public function destroy ($id) {
+  /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function show($id)
+  {
     $post = Post::find($id);
+    return view('show-post', ['post' => $post]);
+  }
 
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function edit($id)
+  {
+    $post = Post::find($id);
+    return view('edit-post', ['post' => $post]);
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request, $id)
+  {
+    $this->validate($request, [
+      'title' => 'required|min:5',
+      'body' => 'required'
+    ]);
+
+    $post = Post::find($id);
+    $post->title = $request->title;
+    $post->body = $request->body;
+    $post->save();
+
+    return redirect()
+            ->action('PostController@show', [
+                      'id' => $post->id
+                    ]);
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy($id)
+  {
+    $post = Post::find($id);
     $post->delete();
-
     return redirect('/');
   }
 }

@@ -4,13 +4,18 @@
   <div id="post_content">
     <h1 class="title">{{ $post->title }}</h1>
 
-    <p class="date">
+    <div class="date">
       <!-- TODO: Use Carbon to get ago_time url:https://github.com/briannesbitt/Carbon -->
       Submitted {{ date('F d, Y', strtotime($post->created_at)) }}
-      | <a href="{{ url('edit-post/' . $post->id) }}">Edit</a>
-      <!-- TODO: Add a confirmation using form url:http://laravel-tricks.com/tricks/confirmation-before-deleting-an-item -->
-      | <a href="{{ url('delete-post/' . $post->id) }}">Delete</a>
-    </p>
+      | <a href="{{ url('post/' . $post->id . '/edit') }}">Edit</a>
+      <!-- Add a confirmation using form url:http://laravel-tricks.com/tricks/confirmation-before-deleting-an-item -->
+      |
+      <form action="{{ url('post/' . $post->id) }}" method="POST" class="form-inline delete">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <input type="submit" class="link" value="Delete">
+      </form>
+    </div>
 
     <p class="body">
       {{ $post->body }}
