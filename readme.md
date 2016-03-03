@@ -12,6 +12,7 @@ To run this on your local server.
 - You need to install PHP. Easiest way to do this is to use [XAMPP](https://www.apachefriends.org/index.html)
 - Clone this repo to your xampp/htdocs dir
 - Create a database named blog from localhost/phpmyadmin
+- Rename the .env.example file to .env
 - Run the following command in that dir
 
     php artisan migrate
