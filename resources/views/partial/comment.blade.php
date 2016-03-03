@@ -5,11 +5,13 @@
     <p class="comment_time">Submitted {{ date('F d, Y', strtotime($comment->created_at)) }}</p>
   </div>
 
-  <p>
-    <form action="{{ url('post/' . $post->id . '/comment/' . $comment->id) }}" method="POST" class="delete">
-      {{ csrf_field() }}
-      {{ method_field('DELETE') }}
-      <input type="submit" class="button" value="Delete">
-    </form>
-  </p>
+  @if(Auth::check())
+    <div>
+      <form action="{{ url('post/' . $post->id . '/comment/' . $comment->id) }}" method="POST" class="delete">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <input type="submit" class="button" value="Delete">
+      </form>
+    </div>
+  @endif
 </div>

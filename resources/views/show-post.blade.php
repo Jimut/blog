@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('content')
   <div id="post_content">
@@ -7,14 +7,16 @@
     <div class="date">
       <!-- TODO: Use Carbon to get ago_time url:https://github.com/briannesbitt/Carbon -->
       Submitted {{ date('F d, Y', strtotime($post->created_at)) }}
-      | <a href="{{ url('post/' . $post->id . '/edit') }}">Edit</a>
-      <!-- Add a confirmation using form url:http://laravel-tricks.com/tricks/confirmation-before-deleting-an-item -->
-      |
-      <form action="{{ url('post/' . $post->id) }}" method="POST" class="form-inline delete">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-        <input type="submit" class="link" value="Delete">
-      </form>
+      @if(Auth::check())
+        | <a href="{{ url('post/' . $post->id . '/edit') }}">Edit</a>
+        <!-- Add a confirmation using form url:http://laravel-tricks.com/tricks/confirmation-before-deleting-an-item -->
+        |
+        <form action="{{ url('post/' . $post->id) }}" method="POST" class="form-inline delete">
+          {{ csrf_field() }}
+          {{ method_field('DELETE') }}
+          <input type="submit" class="link" value="Delete">
+        </form>
+      @endif
     </div>
 
     <p class="body">

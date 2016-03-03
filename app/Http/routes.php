@@ -36,3 +36,7 @@ Route::group(['middleware' => ['web']], function () {
       'store', 'destroy'
     ]]);
 });
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+});

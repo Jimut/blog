@@ -251,7 +251,8 @@ form.form-inline {
     right: 3em;
     top: 3em; }
     #sidebar #logo img {
-      width: 40px; }
+      width: 40px;
+      border-radius: 3px; }
   #sidebar ul {
     list-style: none;
     text-align: right;
@@ -311,10 +312,12 @@ form.form-inline {
       text-decoration: none; }
     #main_content #header .buttons {
       float: right;
-      margin-top: -6px; }
+      margin-top: -1px; }
       #main_content #header .buttons .button {
-        font-size: .8em;
+        font-size: .9em;
         margin-left: .5em; }
+        #main_content #header .buttons .button:hover, #main_content #header .buttons .button:focus {
+          color: #33acb7; }
   #main_content .post_wrapper {
     padding: 3em;
     border-bottom: 1px solid #d6dce0; }

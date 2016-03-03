@@ -1,9 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Blog</title>
+
+    <!-- Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,700' rel='stylesheet' type='text/css'>
+
+    <!-- Styles -->
+    <!-- BUG: Bootstrap causing problem with normal style -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="{{ URL::asset('assets/css/main.css') }}" rel="stylesheet" type="text/css">
   </head>
   <body>
@@ -29,7 +39,11 @@
         <li><a href="mailto:jemdhali67@gmail.com">Email</a></li>
       </ul>
 
-      <p class="sign_in">Admin Login</p>
+      @if(Auth::guest())
+        <p class="sign_in"><a href="{{ url('login') }}">Admin Login</a></p>
+      @else
+        <p class="sign_in">{{ Auth::user()->name }}</p>
+      @endif
     </div>
 
     <div id="main_content">
@@ -42,12 +56,12 @@
           <a href="{{ url('post') }}">Back to all Posts</a>
         @endif
 
-        <div class="buttons">
-          <button class="button">
-            <a href="{{ url('post/create') }}">New Post</a>
-          </button>
-          <button class="button">Log Out</button>
-        </div>
+        @if(Auth::check())
+          <div class="buttons">
+            <a href="{{ url('post/create') }}" class="button">New Post</a>
+            <a href="{{ url('logout') }}" class="button">Log Out</a>
+          </div>
+        @endif
       </div>
 
       <div class="alert"></div>
@@ -55,7 +69,9 @@
       @yield('content')
     </div>
 
+    <!-- Scripts -->
     <script src="{{ URL::asset('assets/js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ URL::asset('assets/js/all.js') }}" type="text/javascript"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
   </body>
 </html>
