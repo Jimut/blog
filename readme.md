@@ -11,5 +11,5 @@ This app is inspired by [Mackenzie Child](https://github.com/mackenziechild). He
 To run this on your local server.
 - You need to install PHP. Easiest way to do this is to use [XAMPP](https://www.apachefriends.org/index.html)
 - Clone this repo to your xampp/htdocs dir
-- Run php artisan migrate in that dir
-
+- Run the following command in that dir
+    php artisan migrate
