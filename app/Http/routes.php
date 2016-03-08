@@ -30,13 +30,15 @@ Route::get('about', 'PageController@about');
 */
 
 Route::group(['middleware' => ['web']], function () {
+  Route::auth();
+
   Route::resource('post', 'PostController');
 
   Route::resource('post/{post_id}/comment', 'CommentController', ['only' => [
       'store', 'destroy'
     ]]);
-});
 
-Route::group(['middleware' => 'web'], function () {
-    Route::auth();
+  Route::any('register', function () {
+    return redirect('/');
+  });
 });
