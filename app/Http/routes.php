@@ -38,7 +38,8 @@ Route::group(['middleware' => ['web']], function () {
       'store', 'destroy'
     ]]);
 
-  Route::any('register', function () {
-    return redirect('/');
-  });
+  // Use it if you don't want anyone to register
+  // Route::any('register', function () {
+  //   return redirect('/');
+  // });
 });
