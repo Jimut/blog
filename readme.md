@@ -16,3 +16,7 @@ To run this on your local server.
 - Run the following command in that dir
 
     php artisan migrate
+
+# Demo
+
+You can find a demo of the app [here](http://blooming-sierra-40514.herokuapp.com/) 
